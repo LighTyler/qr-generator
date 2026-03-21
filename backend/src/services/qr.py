@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta
 
-from schemas.qr  import UserResponse, QRRequest, QRResponse
+from core.uow import UnitOfWork
+
+from schemas.qr import QRRequest, QRResponse
+from schemas.user import UserResponse
 from utils.utils import generate_token, check
 from repositories.qr import QRRepositoryI
 
@@ -15,20 +18,28 @@ class QRService:
         self.uow = uow
         self.qr_repository = qr_repository
 
-    async def generate_token(self, user: UserResponse.email, ) -> str:
+    async def generate_token(self, user: UserResponse) -> str:
         user_dict = user.model_dump()
         salt, token = generate_token(**user_dict)
-        qr_resp = QRResponse(user=user, salt=salt)
+        qr_resp = QRResponse(
+            username=user.username,
+            email=user.email,
+            salt=salt
+        )
         async with self.uow:
             await self.qr_repository.update(qr_resp)
 
         return token
 
     async def check_token(self, user: QRRequest) -> bool:
-        user_rep = await self.qr_repository.get(user.id)
+        # Ищем запись по email (уникальное поле)
+        user_rep = await self.qr_repository.get_by_email(user.email)
+        if not user_rep:
+            return False
+            
         token = check(
             username=user.username,
-            id=user.id,
+            id=user_rep.id,
             email=user.email,
             salt=user_rep.salt,
             )
@@ -36,9 +47,10 @@ class QRService:
         time_valid = datetime.now() < (user_rep.timestamp + timedelta(minutes=5))
         
         async with self.uow:
-            await self.qr_repository.delete(user.id)
+            await self.qr_repository.delete(user_rep.id)
         
         return token and time_valid
+    
 
 
 

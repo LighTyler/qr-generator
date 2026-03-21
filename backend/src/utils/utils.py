@@ -9,10 +9,10 @@ FERNET_KEY = Fernet.generate_key()
 cipher = Fernet(FERNET_KEY)
 
 
-def generate_token(username: str, id: int, email: str) -> str:
+def generate_token(username: str, id: int, email: str) -> tuple[str, str]:
     public_token = encrypt_public(f"{id}.{username}")
     salt, private_token = hash_private_data(private=email)
-    return hex, f"{public_token}.{private_token}"
+    return salt, f"{public_token}.{private_token}"
 
 def check(username: str, id: int, email: str, recieved_token: str, salt: str):
     public_token = encrypt_public(f"{id}.{username}")

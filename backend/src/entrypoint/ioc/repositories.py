@@ -6,6 +6,7 @@ from repositories import (
     IUserRepository,
     UserRepository,
 )
+from repositories.qr import QRRepositoryI, QRRepository
 
 class RepositoryProvider(Provider):
     scope = Scope.REQUEST
@@ -13,6 +14,10 @@ class RepositoryProvider(Provider):
     @provide
     def get_user_repository(self, session: AsyncSession) -> IUserRepository:
         return UserRepository(session)
+
+    @provide
+    def get_qr_repository(self, session: AsyncSession) -> QRRepositoryI:
+        return QRRepository(session)
 
     @provide
     def get_unit_of_work(self, session: AsyncSession) -> UnitOfWork:

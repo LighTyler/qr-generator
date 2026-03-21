@@ -1,12 +1,13 @@
 from pydantic import BaseModel
 
-from schemas.user import UserResponse
 
-class QRBase(BaseModel):
-    user: UserResponse
-
-class QRResponse(QRBase):
+class QRResponse(BaseModel):
+    username: str
+    email: str
     salt: str
 
-class QRRequest(QRBase):
+
+class QRRequest(BaseModel):
+    username: str
+    email: str
     token: str
