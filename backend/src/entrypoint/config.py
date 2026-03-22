@@ -58,6 +58,26 @@ class APPConfig(BaseSettings):
     PORT: int
 
 
+class AuthJWTConfig(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_prefix="AUTH_JWT_",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+    SECRET_KEY: str = "super-secret-key-change-in-production"
+    ALGORITM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
+    @property
+    def PRIVATE_KEY(self):
+        return self.SECRET_KEY
+
+    @property
+    def PUBLIC_KEY(self):
+        return self.SECRET_KEY
+
+
 class Config(BaseSettings):
     model_config = SettingsConfigDict(
         env_file_encoding="utf-8",
@@ -68,6 +88,7 @@ class Config(BaseSettings):
     frontend: FrontendConfig = FrontendConfig()
     service: ServiceConfig = ServiceConfig()
     app: APPConfig = APPConfig()
+    auth_jwt: AuthJWTConfig = AuthJWTConfig()
 
 
 def create_config() -> Config:

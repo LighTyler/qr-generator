@@ -8,11 +8,15 @@ from entrypoint.config import config
 
 def encode_jwt(
     payload: dict,
-    private_key: str = config.auth_jwt.PRIVATE_KEY.read_text(),
-    algorithm: str = config.auth_jwt.ALGORITM,
+    private_key: str = None,
+    algorithm: str = None,
     expire_timedelta: timedelta | None = None,
     expire_minutes: int = None,
 ):
+    if private_key is None:
+        private_key = config.auth_jwt.PRIVATE_KEY
+    if algorithm is None:
+        algorithm = config.auth_jwt.ALGORITM
     to_encode = payload.copy()
     now = datetime.now(UTC)
 
@@ -39,9 +43,13 @@ def encode_jwt(
 
 def decode_jwt(
     token: str | bytes,
-    public_key: str = config.auth_jwt.PUBLIC_KEY.read_text(),
-    algorithm: str = config.auth_jwt.ALGORITM,
+    public_key: str = None,
+    algorithm: str = None,
 ):
+    if public_key is None:
+        public_key = config.auth_jwt.PUBLIC_KEY
+    if algorithm is None:
+        algorithm = config.auth_jwt.ALGORITM
     decoded = jwt.decode(
         token,
         public_key,

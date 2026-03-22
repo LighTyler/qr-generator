@@ -3,7 +3,9 @@ from dishka import Provider, Scope, provide
 from core.uow import UnitOfWork
 
 from repositories.user import IUserRepository
+from repositories.qr import QRRepositoryI
 from services.user import UserService
+from services.qr import QRService
 
 
 class ServiceProvider(Provider):
@@ -12,7 +14,14 @@ class ServiceProvider(Provider):
     @provide
     def get_user_service(
         self,
-        uow: UnitOfWork,
         user_repository: IUserRepository,
     ) -> UserService:
-        return UserService(uow, user_repository)
+        return UserService(user_repository)
+
+    @provide
+    def get_qr_service(
+        self,
+        uow: UnitOfWork,
+        qr_repository: QRRepositoryI,
+    ) -> QRService:
+        return QRService(uow, qr_repository)

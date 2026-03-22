@@ -3,8 +3,7 @@ from typing import Protocol
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import User
-from models.user import RoleEnum
+from models.user import User, RoleEnum
 from schemas.user import UserCreate, UserUpdate, UserCreateConsole
 
 

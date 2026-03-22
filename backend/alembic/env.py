@@ -7,7 +7,8 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
 
-from models import *
+from models.base import Base
+from models.qr import QR  # noqa: F401
 from entrypoint.config import config as _config
 
 # this is the Alembic Config object, which provides

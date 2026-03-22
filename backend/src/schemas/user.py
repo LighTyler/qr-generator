@@ -14,6 +14,25 @@ class UserRequest(BaseModel):
 
 class UserResponse(UserBase):
     id: int = Field(...)
+    role: str = Field(default="user")
+
+
+class UserCreate(BaseModel):
+    username: str = Field(..., max_length=30)
+    email: str = Field(..., max_length=255)
+    password: str = Field(..., max_length=255)
+
+
+class UserCreateConsole(BaseModel):
+    username: str = Field(..., max_length=30)
+    email: str = Field(..., max_length=255)
+    password: str = Field(..., max_length=255)
+    role: str = Field(default="user")
+
+
+class UserUpdate(BaseModel):
+    username: str | None = None
+    email: str | None = None
 
 
 class RefreshToken(BaseModel):
