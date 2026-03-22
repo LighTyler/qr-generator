@@ -5,63 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14da3855-3d2f-43c7-abc4-833a6d7b064e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/monolith.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/alembic.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/alembic/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/alembic/script.py.mako" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/alembic/versions/296de992a8ca_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/scripts/generate_jwt_certs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/scripts/security.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/core/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/core/uow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/create_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/integrations/console_integration.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/registry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/repositories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/servicies.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/entrypoint/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/models/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/models/qr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/repositories/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/repositories/qr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/repositories/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/routers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/routers/qr_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/routers/root_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/schemas/qr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/schemas/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/services/qr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/jwt_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/webapi/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/webapi/qr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.deploy.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/AUTH_FOR_FRONTEND.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/QUICK_STATRT_FOR_BACKEND.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/conf.d/app.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/routers/ws_router.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/services/ws_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/auth.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/integrations/console_integration.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/repositories/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routers/qr_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routers/qr_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routers/root_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routers/root_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/schemas/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/services/qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/services/qr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/utils/jwt_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/jwt_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/webapi/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/webapi/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +58,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/ilya/projects/hackrnd/monolith",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/home/ilya/projects/hackrnd/qr-coder",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>

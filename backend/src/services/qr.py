@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from schemas.qr  import UserResponse, QRRequest, QRResponse
 from utils.utils import generate_token, check
 from repositories.qr import QRRepositoryI
+from webapi.qr import get_user
 
 
 
@@ -15,7 +16,8 @@ class QRService:
         self.uow = uow
         self.qr_repository = qr_repository
 
-    async def generate_token(self, user: UserResponse.email, ) -> str:
+    async def generate_token(self, user: UserResponse.id, ) -> str:
+        user = get_user(user)
         user_dict = user.model_dump()
         salt, token = generate_token(**user_dict)
         qr_resp = QRResponse(user=user, salt=salt)
@@ -24,7 +26,7 @@ class QRService:
 
         return token
 
-    async def check_token(self, user: QRRequest) -> bool:
+    async def check_token(self, user: QRRequest.token) -> bool:
         user_rep = await self.qr_repository.get(user.id)
         token = check(
             username=user.username,

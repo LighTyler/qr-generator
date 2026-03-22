@@ -1,9 +1,5 @@
 from fastapi import APIRouter
 
-from routers import (
-    dev_router,
-    user_router,
-)
 from routers.qr_router import router as qr_router
 
 

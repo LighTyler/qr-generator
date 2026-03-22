@@ -27,7 +27,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    # ✅ Удалено: rabbitmq, redis
     networks:
       - app_net
 

@@ -6,14 +6,14 @@ from pydantic import BaseModel, Field, field_validator
 class UserBase(BaseModel):
     username: str = Field(..., max_length=30)
     email: str = Field(..., max_length=255)
-
+    id: str = Field(...)
 
 class UserRequest(BaseModel):
-    id: int = Field(...)
+    pass
 
 
 class UserResponse(UserBase):
-    id: int = Field(...)
+    pass
 
 
 class RefreshToken(BaseModel):
