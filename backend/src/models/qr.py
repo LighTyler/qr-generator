@@ -1,3 +1,10 @@
+"""Модель QR-токена.
+
+Хранит информацию о токене для QR-авторизации.
+Токен привязан к WebSocket-соединению через connection_id.
+При разрыве соединения токен автоматически инвалидируется.
+"""
+
 from datetime import datetime
 
 from sqlalchemy import String, func, Integer
@@ -7,6 +14,17 @@ from models.base import Base
 
 
 class QR(Base):
+    """QR-токен для авторизации.
+    
+    Attributes:
+        user_id: ID пользователя (primary key для поиска)
+        username: Имя пользователя
+        email: Email пользователя
+        salt: Секретная часть токена
+        timestamp: Время создания
+        connection_id: ID WebSocket-соединения для инвалидации при разрыве
+    """
+    
     __tablename__ = "qr"
     
     user_id: Mapped[int] = mapped_column(
