@@ -1,5 +1,8 @@
-from services.user import UserService
+from .qr import QRService
+from .ws_manager import ConnectionManager
+
 
 __all__ = [
-    "UserService",
+    "QRService",
+    "ConnectionManager"
 ]

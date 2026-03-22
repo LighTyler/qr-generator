@@ -13,7 +13,7 @@ services:
       - PYTHONPATH=src
       - POSTGRES_USER=${POSTGRES_USER:-myuser}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-mypassword}
-      - POSTGRES_HOST=postgres  # ← Имя сервиса ниже
+      - POSTGRES_HOST=postgres
       - POSTGRES_PORT=${POSTGRES_PORT:-5432}
       - POSTGRES_NAME=${POSTGRES_NAME:-mydb}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
@@ -21,7 +21,7 @@ services:
       - APP_NAME=${APP_NAME:-qr-pass-api}
       - APP_HOST=${APP_HOST:-0.0.0.0}
       - APP_PORT=${APP_PORT:-8000}
-    command: sh -c "alembic upgrade head && uvicorn run:make_app --factory --host ${APP_HOST:-0.0.0.0} --port ${APP_PORT:-8000} --reload"
+    command: sh -c "alembic upgrade head && uvicorn run:make_app --factory --host ${APP_HOST:-0.0.0.0} --port ${APP_PORT:-8000}"
     ports:
       - "8000:8000"
     depends_on:

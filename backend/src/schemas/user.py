@@ -1,12 +1,12 @@
 import re
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 
 
 class UserBase(BaseModel):
     username: str = Field(..., max_length=30)
     email: str = Field(..., max_length=255)
-    id: str = Field(...)
+    id: int = Field(...)
 
 class UserRequest(BaseModel):
     pass

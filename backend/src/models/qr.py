@@ -3,10 +3,12 @@ from datetime import datetime
 from sqlalchemy import String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
-from models import Base
+from .base import Base
 
 
 class QR(Base):
+    __tablename__ = "qr"
+
     username: Mapped[str] = mapped_column(
         String(255),
         nullable=False,

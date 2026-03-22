@@ -1,5 +1,7 @@
 from typing import Protocol
 
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 from schemas.qr import QRRequest, QRResponse
 from models.qr import QR
 
@@ -24,13 +26,13 @@ class QRRepository(QRRepositoryI):
         return qr
     
     async def get(self, qr_id: int) -> QR: 
-        query = select(QR).where(QR.id == user_id)
+        query = select(QR).where(QR.id == qr_id)
         result = await self.session.execute(query)
         return result.scalar_one_or_none() 
 
     async def update(self, qrdata: QRResponse) -> QR:
 
-        qr = await self.get(qrdata.id)
+        qr = await self.get(qrdata.user.id)
         if not qr:
             return None
         

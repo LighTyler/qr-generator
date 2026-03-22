@@ -16,19 +16,19 @@ router = APIRouter(
 
 @router.post("/get-qr")
 async def get(
-    user: FromDishka[UserResponse],
+    user: UserResponse,
     service: FromDishka[QRService],
     ):
     token = await service.generate_token(user)
     return {"msg": token}
 
-@router.post("/check-qr", response_model=HTTP_200_OK)
+@router.post("/check-qr", status_code=HTTP_200_OK)
 async def check(
-    user: QRRequest,
+    token: str,
     service: FromDishka[QRService],
     ):
-    check = await service.check_token(user)
-    if check:
+    token_check = await service.check_token(token)
+    if token_check:
         return
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)

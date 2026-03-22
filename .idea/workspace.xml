@@ -6,9 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="14da3855-3d2f-43c7-abc4-833a6d7b064e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/versions/296de992a8ca_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/versions/296de992a8ca_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/create_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/repositories.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/repositories.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/ioc/servicies.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/ioc/servicies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/entrypoint/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/entrypoint/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/qr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/repositories/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/repositories/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/repositories/qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/repositories/qr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routers/qr_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routers/qr_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/schemas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/schemas/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/schemas/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/services/qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/services/qr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/webapi/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/webapi/qr.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

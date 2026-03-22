@@ -1,6 +1,6 @@
-from repositories.user import UserRepository, IUserRepository
+from .qr import QRRepository, QRRepositoryI
 
 __all__ = [
-    "UserRepository",
-    "IUserRepository",
+    "QRRepository",
+    "QRRepositoryI",
 ]

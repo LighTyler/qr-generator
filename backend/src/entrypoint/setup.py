@@ -6,27 +6,17 @@ from dishka import Provider, make_async_container
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from clients import RedisClient
-from core import broker
 from entrypoint.config import Config, create_config, config
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     config = create_config()
-    redis_client = RedisClient(config)
-    redis = redis_client.get_redis()
-    await redis.ping()
-    logging.info("Redis is working")
-
-    await broker.startup()
+    logging.info("Starting...")
 
     yield
 
-    await broker.shutdown()
-
-    await redis.aclose()
-    logging.info("Redis disconnected")
+    logging.info("Shutdown...")
 
 
 def create_app() -> FastAPI:
@@ -49,7 +39,6 @@ def configure_app(app: FastAPI, root_router: APIRouter) -> None:
 def configure_middlewares(app: FastAPI) -> None:
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=[config.frontend.URL, config.service.URL],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
