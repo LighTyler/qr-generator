@@ -1,6 +1,5 @@
 services:
   backend:
-    &backend
     env_file: .env
     build: ./backend
     restart: always
@@ -13,37 +12,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-    networks:
-      - app_net
-
-  worker:
-    <<: *backend
-    command: taskiq worker core:broker --workers 1 --fs-discover --tasks-pattern **/tasks/*.py
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      postgres:
-        condition: service_healthy
-
-  rabbitmq:
-    image: rabbitmq:4-management-alpine
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: "guest"
-      RABBITMQ_DEFAULT_PASS: "guest"
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "check_running", "-q"]
-      interval: 10s
-      timeout: 5s
-      retries: 8
     networks:
       - app_net
 
@@ -67,20 +35,6 @@ services:
       - app_net
     restart: always
 
-  redis:
-    image: redis:8-alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis-data:/data
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app_net
-
   nginx:
     image: nginx:1.27-alpine
     ports:
@@ -99,5 +53,3 @@ networks:
 
 volumes:
   postgres-data:
-  redis-data:
-  rabbitmq-data:
