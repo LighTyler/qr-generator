@@ -39,12 +39,16 @@ class QRService:
             id=user_rep.id,
             email=user_rep.email,
             salt=user_rep.salt,
+            recieved_token=token,
             )
-        
+
+        if user_rep.timestamp is None:
+            return False
+
         time_valid = datetime.now() < (user_rep.timestamp + timedelta(minutes=5))
         
         async with self.uow:
-            await self.qr_repository.delete(user_id)
+            await self.qr_repository.delete_note(user_id)
         
         return token and time_valid
 

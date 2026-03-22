@@ -10,7 +10,8 @@ class QRRepositoryI(Protocol):
     async def create(self, qrdata: QRResponse) -> QR: ...
     async def get(self, qrdata: QRResponse) -> QR: ...
     async def update(self, qrdata: QRResponse) -> QR: ...
-    async def delete(self, qr_id: int): ...
+    async def delete_user(self, qr_id: int) -> bool: ...
+    async def delete_note(self, qr_id: int) -> bool: ...
 
 class QRRepository(QRRepositoryI):
     def __init__(
@@ -25,7 +26,7 @@ class QRRepository(QRRepositoryI):
         await self.session.refresh(qr)
         return qr
     
-    async def get(self, qr_id: int) -> QR: 
+    async def get(self, qr_id: int) -> QR:
         query = select(QR).where(QR.id == qr_id)
         result = await self.session.execute(query)
         return result.scalar_one_or_none() 
@@ -44,15 +45,28 @@ class QRRepository(QRRepositoryI):
         await self.session.refresh(qr)
         return qr
 
-    async def delete(self, qr_id: int) -> bool:
+    async def delete_user(self, qr_id: int) -> bool:
 
         qr = await self.get(qr_id)
         
         if not qr:
             return False
         
-        await self.session.delete(qr)
+        qr.timestamp = None
         
         await self.session.flush()
         
+        return True
+
+    async def delete_timestamp(self, qr_id: int) -> bool:
+
+        qr = await self.get(qr_id)
+
+        if not qr:
+            return False
+
+        await self.session.delete(qr.timestamp)
+
+        await self.session.flush()
+
         return True
