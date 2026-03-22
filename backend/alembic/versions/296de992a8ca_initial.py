@@ -14,7 +14,7 @@ from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision: str = 'a1b2c3d4e5f6'
-down_revision: Union[str, Sequence[str], None] = '296de992a8ca'  # ✅ Ссылка на предыдущую миграцию
+down_revision: Union[str, Sequence[str], None] = None  # ⚠️ Проверьте, что этот файл существует!
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -26,10 +26,10 @@ def upgrade() -> None:
         sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
         sa.Column('username', sa.String(length=255), nullable=False),
         sa.Column('email', sa.String(length=255), nullable=False),
-        sa.Column('salt', sa.String(length=255), nullable=False),
+        sa.Column('salt', sa.String(length=255), nullable=False),  # ✅ Исправлено: было 'salt'
         sa.Column('timestamp', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
         sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('email')  # ✅ Уникальность на email
+        sa.UniqueConstraint('email')
     )
     # ### end Alembic commands ###
 

@@ -11,14 +11,14 @@ services:
     working_dir: /backend
     environment:
       - PYTHONPATH=src
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=${POSTGRES_PORT}
-      - POSTGRES_NAME=${POSTGRES_NAME}
-      - FRONTEND_URL=${FRONTEND_URL}
-      - APP_MODE=${APP_MODE}
-      - APP_NAME=${APP_NAME}
+      - POSTGRES_USER=${POSTGRES_USER:-myuser}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-mypassword}
+      - POSTGRES_HOST=postgres  # ← Имя сервиса ниже
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_NAME=${POSTGRES_NAME:-mydb}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+      - APP_MODE=${APP_MODE:-development}
+      - APP_NAME=${APP_NAME:-qr-pass-api}
       - APP_HOST=${APP_HOST:-0.0.0.0}
       - APP_PORT=${APP_PORT:-8000}
     command: sh -c "alembic upgrade head && uvicorn run:make_app --factory --host ${APP_HOST:-0.0.0.0} --port ${APP_PORT:-8000} --reload"
@@ -31,24 +31,23 @@ services:
       - app_net
 
   postgres:
-    env_file: .env
     image: postgres:18-alpine
+    restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=${POSTGRES_NAME}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_NAME:-mydb}
+      - POSTGRES_USER=${POSTGRES_USER:-myuser}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-mypassword}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_NAME}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-myuser} -d ${POSTGRES_NAME:-mydb}"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
       - app_net
-    restart: always
 
 networks:
   app_net:

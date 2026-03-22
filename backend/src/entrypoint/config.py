@@ -36,16 +36,6 @@ class ServiceConfig(BaseSettings):
     URL: str
 
 
-class FrontendConfig(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_prefix="FRONTEND_",
-        env_file_encoding="utf-8",
-        extra="ignore",
-    )
-
-    URL: str
-
-
 class APPConfig(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="APP_",
@@ -65,7 +55,6 @@ class Config(BaseSettings):
     )
 
     database: DatabaseConfig = DatabaseConfig()
-    frontend: FrontendConfig = FrontendConfig()
     service: ServiceConfig = ServiceConfig()
     app: APPConfig = APPConfig()
 
